@@ -24,13 +24,12 @@ export default function page() {
     }, [])
 
     function handleChange(e) {
-        // setWord(e.target.value)
-        startTransition(() => {setWord(e.target.value)});
+        setWord(e.target.value)
     }
 
     useEffect(() => {
         if (word === undefined) return;
-        router.push(`/words?query=${word}`)
+        startTransition(() => {router.push(`/words?query=${word}`)});
     }, [word])
 
     return (
