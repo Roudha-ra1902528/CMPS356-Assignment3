@@ -29,7 +29,7 @@ export default function page() {
     useEffect(() => {
         if (word === undefined) return;
         router.push(`/words?query=${word}`)
-    }, [word])
+    }, [word]) 
 
     return (
         <>
