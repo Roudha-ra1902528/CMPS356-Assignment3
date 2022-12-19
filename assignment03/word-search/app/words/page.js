@@ -22,6 +22,7 @@ export default function page() {
     useEffect(() => {
         if(!query) return;
         setWord(query)
+        setTyped(query)
     }, [])
 
     function handleChange(e) {
@@ -40,10 +41,10 @@ export default function page() {
             {isPending &&  <div>is Pending</div>}
             <Stack flexDirection={'row'}>
                 <TextField value={typed} id="standard-basic" label="Search" variant="outlined" onChange={handleChange} sx={{ marginTop: "50px", width: "300px", minWidth: "250px", backgroundColor: isPending && 'lightyellow'}} />
-                <Suggestions word={word} setWord={setWord} />
+                <Suggestions word={word} setWord={setWord} setTyped={setTyped}/>
             </Stack>
 
-            <Tags setWord={setWord} />
+            <Tags setWord={setWord} setTyped={setTyped}/>
 
             <h4 style={{ color: "gray", paddingLeft: "5px", marginTop: "50px" }}>S Y N O N Y M S</h4>
             <TableComponent query={query}/>

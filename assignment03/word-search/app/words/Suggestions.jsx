@@ -9,7 +9,7 @@ async function fetchWords(url) {
     return data
 }
 
-export default function Suggestions({ word, setWord }) {
+export default function Suggestions({ word, setWord, setTyped}) {
     const { isLoading, data } = useQuery(['suggestions', word], () => fetchWords(`https://api.datamuse.com/sug?s=${word}`))
 
     if (isLoading) return <h5 style={{marginTop: "70px", marginLeft:"30px"}}>...Loading</h5>
@@ -23,7 +23,7 @@ export default function Suggestions({ word, setWord }) {
                 aria-label="scrollable force tabs example"
                 sx={{ height: "50px"}}
             >
-                {data.map(s => <Tab onClick={() => setWord(s.word)} label={s.word} style={{ marginTop: '2px'}} />)}
+                {data.map(s => <Tab onClick={() => {setWord(s.word); setTyped(s.word)}} label={s.word} style={{ marginTop: '2px'}} />)}
             </Tabs>
         </Box>
     );

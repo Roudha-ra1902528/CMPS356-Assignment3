@@ -2,7 +2,7 @@ import { useStore } from '../../stores/store';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
-export default function Tags({ setWord }) {
+export default function Tags({ setWord, setTyped }) {
     const selection = useStore(state => state.selection)
     const handleDelete = useStore(state => state.handleDelete)
 
@@ -14,7 +14,7 @@ export default function Tags({ setWord }) {
                 {selection.map(s =>
                     <Chip
                         label={s}
-                        onClick={() => setWord(s)}
+                        onClick={() => {setWord(s); setTyped(s)}}
                         onDelete={() => handleDelete(s)}
                         color="primary"
                         variant='outlined'
