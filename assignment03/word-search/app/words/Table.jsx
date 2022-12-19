@@ -24,8 +24,10 @@ async function fetchWords(url) {
 export default function TableComponent({query}) {
     const selection = useStore(state => state.selection)
     const handleClick = useStore(state => state.handleClick)
+    const [isPending, startTransition] = useTransition();
 
-    const { isLoading, data } = useQuery(['words', query], () => fetchWords(`https://api.datamuse.com/words?ml=${query}`))
+    const { isLoading, data } = 
+    startTransition(() => {useQuery(['words', query], () => fetchWords(`https://api.datamuse.com/words?ml=${query}`))});
 
     if (isLoading) return <CircularProgress sx={{ marginTop: "100px", marginX: "10px"}} size="100px" />
 
