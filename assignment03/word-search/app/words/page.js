@@ -29,7 +29,8 @@ export default function page() {
 
     useEffect(() => {
         if (word === undefined) return;
-        startTransition(() => {router.push(`/words?query=${word}`)});
+        router.push(`/words?query=${word}`)
+        // startTransition(() => {router.push(`/words?query=${word}`)});
     }, [word])
 
     return (
