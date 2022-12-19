@@ -34,7 +34,7 @@ export default function page() {
     return (
         <>
             <h2 style={{ color: "black", backgroundColor: "#F5F5F5", padding: "20px 10px 20px 30px", borderRadius: "8px" }}> W O R D &nbsp; S E A R C H</h2>
-            {/* {isPending &&  <div>is Pending</div>} */}
+            
             <Stack flexDirection={'row'}>
                 <TextField value={word} id="standard-basic" label="Search" variant="outlined" onChange={handleChange} sx={{ marginTop: "50px", width: "300px", minWidth: "250px"}} />
                 {/* , backgroundColor: isPending && 'lightyellow' */}

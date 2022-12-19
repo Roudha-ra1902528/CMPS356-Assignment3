@@ -22,6 +22,7 @@ async function fetchWords(url) {
 
 
 export default function TableComponent({query}) {
+    const [isPending, startTransition] = useTransition()
     const selection = useStore(state => state.selection)
     const handleClick = useStore(state => state.handleClick)
 
@@ -30,10 +31,9 @@ export default function TableComponent({query}) {
     if (isLoading) return <CircularProgress sx={{ marginTop: "100px", marginX: "10px"}} size="100px" />
 
     return (<>
-        <h4 style={{color: "black", backgroundColor: "#FFCCCC", padding:"20px 10px 20px 30px", borderRadius:"8px",  display: data.length == 0 && query!="" ? 'block' : 'none' }}> N O &nbsp; M A T C H I N G &nbsp; W O R D S</h4>
-
+        <h4 style={{color: "black", backgroundColor: "#FFCCCC", padding:"20px 10px 20px 30px", borderRadius:"8px",  display: data?.length == 0 && query!="" ? 'block' : 'none' }}> N O &nbsp; M A T C H I N G &nbsp; W O R D S</h4>
         <TableContainer component={Paper} sx={{ marginTop: "30px" }}>
-            <Table sx={{ minWidth: 650, display: data.length == 0 && query!="" && 'none'  }} aria-label="simple table">
+            <Table sx={{ minWidth: 650, display: data?.length == 0 && query!="" && 'none'  }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell ><h3>word</h3></TableCell>
@@ -42,7 +42,7 @@ export default function TableComponent({query}) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map((row) => (
+                    {data?.map((row) => (
                         <TableRow
                             key={row.word}
                             onClick={() => handleClick(row.word)}
