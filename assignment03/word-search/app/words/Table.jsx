@@ -22,7 +22,6 @@ async function fetchWords(url) {
 
 
 export default function TableComponent({query}) {
-    const [isPending, startTransition] = useTransition()
     const selection = useStore(state => state.selection)
     const handleClick = useStore(state => state.handleClick)
 
